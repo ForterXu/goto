@@ -5,6 +5,7 @@ const stat = promisify(fs.stat);
 const readdir = promisify(fs.readdir);
 const handlebars = require('handlebars');
 const conf = require('../config/defaultConfig');
+const compress = require('../util/compress');
 
 // 通过锚点__dirname拿到tpl的绝对路径
 const tplPath = path.join(__dirname, '../template/dir.tpl');
@@ -22,7 +23,11 @@ module.exports = async function (req, res, filePath) {
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/plain');
       // 流读取输出
-      fs.createReadStream(filePath).pipe(res);
+      let rs = fs.createReadStream(filePath);
+      if(filePath.match(conf.compress)) {
+        rs = compress(rs, req, res);
+      }
+      rs.pipe(res);
     } else if(stats.isDirectory()) {
       // 文件夹形式 模板输出
       res.statusCode = 200;

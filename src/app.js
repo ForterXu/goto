@@ -10,6 +10,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(conf.port, conf.hostname, () => {
-  let address = `http://${conf.hostname}:${conf.port}`
+  let address = `http://${conf.hostname}:${conf.port}`;
   console.info(`Server started at ${chalk.green(address)}`);
 });

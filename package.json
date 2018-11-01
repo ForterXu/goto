@@ -28,7 +28,10 @@
     "url": "https://github.com/ForterXu/goto/issues"
   },
   "homepage": "https://github.com/ForterXu/goto#readme",
-  "dependencies": {},
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "handlebars": "^4.0.12"
+  },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",

@@ -2,7 +2,7 @@ const yargs = require('yargs');
 const Server = require('./app');
 
 const argv = yargs
-  .usage('goto [options]')
+  .usage('gotowhere [options]')
   .option('p', {
     alias: 'port',
     describe: '端口号',
